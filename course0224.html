@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生操作系統 2.0 - 台北大自在講堂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+        }
+        .text-brand { color: #c0a479; }
+        .bg-brand { background-color: #c0a479; }
+        .border-brand { border-color: #c0a479; }
+        
+        .text-main { color: #2d2d2d; }
+        .text-sub { color: #5a5a5a; }
+
+        .hero-section {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1528319725582-ddc096101511?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* 毛玻璃效果 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-top: 3px solid #c0a479;
+            border-bottom: 3px solid #c0a479;
+            box-shadow: 0 10px 40px -10px rgba(192, 164, 121, 0.15);
+        }
+
+        .premium-card {
+            background: #ffffff;
+            border: 1px solid #f3f3f3;
+            border-radius: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: #c0a479;
+        }
+
+        .target-box {
+            border: 1.5px dashed #d1d5db;
+            border-radius: 2rem;
+            background-color: #fafafa;
+        }
+
+        .floating-cta {
+            box-shadow: 0 10px 25px -5px rgba(192, 164, 121, 0.4);
+        }
+
+        .video-btn.active {
+            background-color: #fdfaf5;
+            border-color: #c0a479;
+            color: #c0a479;
+            font-weight: bold;
+        }
+
+        .image-placeholder {
+            background-color: #f8f6f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c0a479;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="text-main leading-relaxed">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 px-6 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex flex-col">
+            <span class="text-[10px] tracking-[0.4em] text-stone-400 font-bold uppercase leading-none mb-1">佛乘宗</span>
+            <span class="text-xl font-bold text-brand tracking-widest">台北大自在講堂</span>
+        </div>
+        <div class="hidden lg:flex gap-10 text-sm font-medium text-stone-600">
+            <a href="#about" class="hover:text-brand transition">課程介紹</a>
+            <a href="#syllabus" class="hover:text-brand transition">課程大綱</a>
+            <a href="#target" class="hover:text-brand transition">適合對象</a>
+            <a href="#testimonials" class="hover:text-brand transition">學員心得</a>
+        </div>
+        <a href="#register" class="bg-brand text-white px-8 py-2.5 rounded-full text-sm font-bold hover:brightness-105 transition">立即報名</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-48 pb-32 px-6 text-center">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <p class="text-stone-500 font-medium tracking-[0.3em] mb-4 text-sm lg:text-base">佛乘大法實修實證班</p>
+            <h1 class="text-5xl md:text-8xl font-bold mb-14 text-stone-900 leading-tight tracking-tight">人生操作系統 2.0</h1>
+            
+            <div class="glass-panel py-12 px-8 md:px-16 mx-auto rounded-[2.5rem] max-w-3xl mb-16 text-stone-800">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                    <div class="text-center">
+                        <span class="text-brand font-bold block mb-1 text-sm tracking-widest">開課日期</span>
+                        <span class="text-2xl font-bold">2/3 (二)</span>
+                    </div>
+                    <div class="w-px h-10 bg-stone-200 hidden md:block"></div>
+                    <div class="text-center">
+                        <span class="text-brand font-bold block mb-1 text-sm tracking-widest">上課時間</span>
+                        <span class="text-2xl font-bold">每週二 19:30</span>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-stone-100/50 space-y-3">
+                    <p class="text-stone-700 text-lg">上課地點：台北市中山區長春路 366 號 2 樓 <span class="text-stone-400 text-sm">(近南京復興站)</span></p>
+                    <p class="text-brand font-bold text-lg">報名專線：02-8770-6196 ／ 0965-606-196</p>
+                </div>
+            </div>
+
+            <p class="max-w-2xl mx-auto text-stone-500 text-lg md:text-xl italic font-light">
+                「在忙碌的現代生活中，我們習慣不斷更新手機軟體，卻往往忽略了，真正主宰人生走向的，是自己的思維與能量系統。」
+            </p>
+        </div>
+    </section>
+
+    <!-- Course Introduction Section -->
+    <section id="about" class="py-32 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center text-stone-900">課程介紹</h2>
+            
+            <div class="max-w-4xl mx-auto text-stone-600 leading-loose text-lg md:text-xl space-y-10 mb-24 text-center">
+                <p>佛乘宗的「佛法實修實證班」，並非枯燥的佛學理論研究，而是超科學、超哲學、超宗教的實證法門。引導學員以可實修、可驗證的方法，回到生命的本元。</p>
+                <p>本課程秉承 善性導師的教導，並依循祖師所立之修行次第，將博大精深的「佛乘大法」濃縮為易學、易懂的「六大心法」與「三禪一懺」之實修架構，使深奧義理轉化為具體可行的用功方法，讓修行不再遙遠，而能真正落實於日常。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20">
+                <!-- Psychology -->
+                <div class="premium-card p-10 shadow-sm border-t-8 border-brand flex flex-col justify-between h-full text-left">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-stone-900">心理功課（八大加行）</h3>
+                        <p class="text-sub leading-relaxed text-lg mb-8">
+                            破除心理執著，這不僅能解決生活的疑難，更是一場讓思想觀念脫胎換骨的旅程。
+                        </p>
+                    </div>
+                    <div class="image-placeholder w-full aspect-[4/3] rounded-2xl">[ 心理修持意象 ]</div>
+                </div>
+                <!-- Physiology -->
+                <div class="premium-card p-10 shadow-sm border-t-8 border-stone-800 flex flex-col justify-between h-full text-left">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-stone-900">生理功課（九段禪功）</h3>
+                        <p class="text-sub leading-relaxed text-lg mb-8">
+                            突破生理障礙，開發身心大能。心理與生理功課同時併進，實現全方位升級。
+                        </p>
+                    </div>
+                    <div class="image-placeholder w-full aspect-[4/3] rounded-2xl">[ 生理禪功實境 ]</div>
+                </div>
+            </div>
+
+            <div class="target-box max-w-4xl mx-auto p-12 text-center shadow-sm">
+                <span class="text-stone-500 font-bold tracking-[0.4em] text-sm md:text-base uppercase block mb-8">邁向「十大一如」的圓滿境界</span>
+                <p class="text-base md:text-lg text-stone-400 tracking-[0.4em] font-light">
+                    體、相、智、德、理、事、能、用、時、空
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syllabus (Double Column) -->
+    <section id="syllabus" class="py-32 px-6 bg-stone-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-stone-900">初級班 12 週課程大綱</h2>
+                <p class="text-brand font-bold tracking-widest text-lg">每週一次・共十二週・免學費授課</p>
+                <p class="mt-6 text-sub max-w-2xl mx-auto text-base leading-relaxed">本課程以「建立正確見地」為主軸，循序帶領學員由認識傳承、奠定根基，進入實修實證；並搭配傳法、每週的靜禪與動禪，讓修行落實於身心。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 text-left">
+                <!-- W1-2 -->
+                <div class="bg-white p-10 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <span class="text-brand font-bold text-sm block mb-3 uppercase tracking-widest">Week 01–02</span>
+                    <h4 class="text-xl font-bold mb-4">建立根基</h4>
+                    <p class="text-sub text-base leading-loose">認識佛乘宗創立因緣與承傳法統，了解本門以「大自在王佛」為本門第一代祖師之依止與傳承脈絡，奠定入門正見與修行根基。</p>
+                </div>
+                <!-- W3-4 -->
+                <div class="bg-white p-10 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <span class="text-brand font-bold text-sm block mb-3 uppercase tracking-widest">Week 03–04</span>
+                    <h4 class="text-xl font-bold mb-4">功能覺醒</h4>
+                    <p class="text-sub text-base leading-loose">掌握本門修行的完整次第：八大加行著重破除心理執著，九段禪功著重破除生理執著；兩者並進、相輔相成，突破妄想執著，朝向目標前行。</p>
+                </div>
+                <!-- W5-6 -->
+                <div class="bg-white p-10 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <span class="text-brand font-bold text-sm block mb-3 uppercase tracking-widest">Week 05–06</span>
+                    <h4 class="text-xl font-bold mb-4">心品修持</h4>
+                    <p class="text-sub text-base leading-loose">深入「十無量相應心品」，以可著手、可用功的心法，建立清明、寬廣、相應的心行；並學習從「相」入手提升至「體」的用功方向。</p>
+                </div>
+                <!-- W7-8 -->
+                <div class="bg-white p-10 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <span class="text-brand font-bold text-sm block mb-3 uppercase tracking-widest">Week 07–08</span>
+                    <h4 class="text-xl font-bold mb-4 text-left">人法相應與和協功</h4>
+                    <p class="text-sub text-base leading-loose">明白修行成就關鍵在「相應」：肯定自性具足十大功能，學習相應要領（不對立、不分別）。進入「九段禪功之一：初段和協功」修持方向，調和身心。</p>
+                </div>
+                <!-- W9-10 -->
+                <div class="bg-white p-10 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <span class="text-brand font-bold text-sm block mb-3 uppercase tracking-widest">Week 09–10</span>
+                    <h4 class="text-xl font-bold mb-4 text-left text-left">懺悔修持與弘法原則</h4>
+                    <p class="text-sub text-base leading-loose">修持「禮佛拜懺文」修正身語意以去除障礙，為消除業障之重要法門。同時認識佛乘宗弘法四大原則，建立正確修行態度與方向。</p>
+                </div>
+                <!-- W11-12 -->
+                <div class="bg-white p-10 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <span class="text-brand font-bold text-sm block mb-3 uppercase tracking-widest">Week 11–12</span>
+                    <h4 class="text-xl font-bold mb-4 text-left text-left text-left">皈依與門規</h4>
+                    <p class="text-sub text-base leading-loose text-left">認識「皈依五寶」要義：與五寶相應進而證入自性，以達即生解脫、證道。理解門規為具體實修之法，依規而行，方能穩定前行。</p>
+                </div>
+            </div>
+            <p class="text-center mt-14 text-stone-400 text-sm italic">更詳細之週次內容（含每週課題與實修安排），可於現場「課程表」對照查閱。</p>
+        </div>
+    </section>
+
+    <!-- Who is it for (6 Types) -->
+    <section id="target" class="py-32 px-6 bg-white text-left">
+        <div class="max-w-6xl mx-auto space-y-28">
+            <div>
+                <h3 class="text-3xl md:text-5xl font-bold mb-16 text-center text-stone-900">哪些人適合這堂課？</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Type 1 -->
+                    <div class="premium-card overflow-hidden">
+                        <div class="image-placeholder aspect-video">[ 生活瓶頸意象 ]</div>
+                        <div class="p-8">
+                            <h5 class="font-bold text-brand text-xl mb-3">面臨生活瓶頸者</h5>
+                            <p class="text-stone-500 text-sm leading-relaxed">對於生老病死、宇宙生命真相感到疑惑，希望尋求究竟解答的人。</p>
+                        </div>
+                    </div>
+                    <!-- Type 2 -->
+                    <div class="premium-card overflow-hidden">
+                        <div class="image-placeholder aspect-video">[ 情緒轉化意象 ]</div>
+                        <div class="p-8">
+                            <h5 class="font-bold text-brand text-xl mb-3">深受情緒困擾者</h5>
+                            <p class="text-stone-500 text-sm leading-relaxed">希望解決貪、瞋、癡、慢、疑等習氣，讓心境達到穩定和協、不隨境轉。</p>
+                        </div>
+                    </div>
+                    <!-- Type 3 -->
+                    <div class="premium-card overflow-hidden">
+                        <div class="image-placeholder aspect-video">[ 身心能量意象 ]</div>
+                        <div class="p-8">
+                            <h5 class="font-bold text-brand text-xl mb-3">渴望身心健康者</h5>
+                            <p class="text-stone-500 text-sm leading-relaxed">想要開發人體潛能，打通全身氣脈、增進身體健康與能量提升的人。</p>
+                        </div>
+                    </div>
+                    <!-- Type 4 -->
+                    <div class="premium-card overflow-hidden">
+                        <div class="image-placeholder aspect-video">[ 圓融生活意象 ]</div>
+                        <div class="p-8">
+                            <h5 class="font-bold text-brand text-xl mb-3">追求世間圓融者</h5>
+                            <p class="text-stone-500 text-sm leading-relaxed">期待透過觀念轉變改善關係，讓世間法與出世法圓融一體、事事和協。</p>
+                        </div>
+                    </div>
+                    <!-- Type 5 -->
+                    <div class="premium-card overflow-hidden">
+                        <div class="image-placeholder aspect-video">[ 科學實證意象 ]</div>
+                        <div class="p-8">
+                            <h5 class="font-bold text-brand text-xl mb-3">科學與邏輯思維者</h5>
+                            <p class="text-stone-500 text-sm leading-relaxed">喜歡以科學、現代化視角探討生命本質，不滿足於傳統教條說法的人。</p>
+                        </div>
+                    </div>
+                    <!-- Type 6 -->
+                    <div class="premium-card overflow-hidden border-brand/30 bg-brand/5">
+                        <div class="image-placeholder aspect-video bg-brand/10">[ 第六種型態意象 ]</div>
+                        <div class="p-8">
+                            <h5 class="font-bold text-brand text-xl mb-3">第六種型態</h5>
+                            <p class="text-stone-500 text-sm leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Outcomes -->
+            <div class="bg-stone-50 rounded-[3.5rem] p-12 lg:p-24 text-center">
+                <h3 class="text-3xl md:text-5xl font-bold mb-10 text-stone-900">這 12 週，你將學到什麼？</h3>
+                <p class="text-brand mb-16 font-bold text-lg tracking-widest uppercase">開啟「智用神通」與「無限智慧」的五把鑰匙</p>
+                <div class="grid gap-12 max-w-4xl mx-auto text-left">
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-brand text-white w-14 h-14 rounded-full flex items-center justify-center font-bold shrink-0 text-2xl shadow-md">1</div>
+                        <div class="pt-2">
+                            <h5 class="font-bold text-2xl mb-3 text-stone-900">重塑宇宙觀與生命觀</h5>
+                            <p class="text-sub text-lg leading-loose">認識法界本元「大自在王佛」，了解生命變易生化的原理，建立正知正見。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-brand text-white w-14 h-14 rounded-full flex items-center justify-center font-bold shrink-0 text-2xl shadow-md">2</div>
+                        <div class="pt-2">
+                            <h5 class="font-bold text-2xl mb-3 text-stone-900">掌握解脫心法</h5>
+                            <p class="text-sub text-lg leading-loose">修持「九字禪」（無量陀羅尼之總持）與「禮佛拜懺文」，有效消除業障、增長智慧。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-brand text-white w-14 h-14 rounded-full flex items-center justify-center font-bold shrink-0 text-2xl shadow-md text-left">3</div>
+                        <div class="pt-2">
+                            <h5 class="font-bold text-2xl mb-3 text-stone-900 text-left">實踐十無量相應心</h5>
+                            <p class="text-sub text-lg leading-loose text-left">學習慈悲、平等、捨離等十種無量心，將其轉化為日常行為準則，讓人生處處相應。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-brand text-white w-14 h-14 rounded-full flex items-center justify-center font-bold shrink-0 text-2xl shadow-md">4</div>
+                        <div class="pt-2 text-left">
+                            <h5 class="font-bold text-2xl mb-3 text-stone-900">開發身心大能（禪功）</h5>
+                            <p class="text-sub text-lg leading-loose">透過「初段和協功」凝聚氣能，打通任督二脈，讓生理、心理狀況獲得根本改善。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-brand text-white w-14 h-14 rounded-full flex items-center justify-center font-bold shrink-0 text-2xl shadow-md">5</div>
+                        <div class="pt-2">
+                            <h5 class="font-bold text-2xl mb-3 text-stone-900">意識穩定與禪定</h5>
+                            <p class="text-sub text-lg leading-loose">透過「坐斷乾坤」靜禪訓練，培養專注力進入無念之境，發現內在的自性寶藏。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-32 px-6 bg-white text-left">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center text-stone-900">學員的學習心得</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <p class="text-stone-700 leading-loose mb-10 text-base italic">「最難接受的道理，往往蘊含最深的智慧。當我們放下對錯的執著，不再向外尋找責任歸屬，才能真正看清因果的真相。」</p>
+                    <div class="flex items-center justify-between mt-auto pt-6 border-t border-stone-100">
+                        <span class="font-bold text-stone-800">學員 法耶</span>
+                        <a href="#" class="text-brand text-sm hover:underline font-bold">閱讀完整故事</a>
+                    </div>
+                </div>
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <p class="text-stone-700 leading-loose mb-10 text-base italic">「意外骨折後，手腕長年抽痛、夜不能眠。練習『空即是色』動禪時咬牙撐過極限，一股氣通過手掌的瞬間，多年疼痛竟消失了。垂肩改善了、肉瘤消失了、洗牙不再流血——禪功不只是運動，而是改寫身體命運的鑰匙。」</p>
+                    <div class="flex items-center justify-between mt-auto pt-6 border-t border-stone-100">
+                        <span class="font-bold text-stone-800">學員 法敏</span>
+                        <a href="#" class="text-brand text-sm hover:underline font-bold">閱讀完整故事</a>
+                    </div>
+                </div>
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <p class="text-stone-700 leading-loose mb-10 text-base italic">「八十歲才開始學佛，起初上課還打瞌睡。聽導師鼓勵後，我每天念佛十萬聲以上。半年內，困擾多年的雞眼不藥而癒、失眠消失、家庭變得和諧。學佛永不嫌晚，越精進越歡喜——念佛真好！」</p>
+                    <div class="flex items-center justify-between mt-auto pt-6 border-t border-stone-100">
+                        <span class="font-bold text-stone-800">學員 法升</span>
+                        <a href="#" class="text-brand text-sm hover:underline font-bold">閱讀完整故事</a>
+                    </div>
+                </div>
+                <div class="premium-card p-10 flex flex-col justify-between text-left">
+                    <p class="text-stone-700 leading-loose mb-10 text-base italic text-left">「從小鼻子過敏、偏頭痛、頻尿、脊椎重傷，每天拖著虛弱身體勉強度日。修學佛乘大法後，打坐時脊椎竟慢慢密合，全家更一起修行。孩子用佛法提醒我去習氣，夫妻爭執時互說『不對立』——我的人生，從修行後才真正開始。」</p>
+                    <div class="flex items-center justify-between mt-auto pt-6 border-t border-stone-100">
+                        <span class="font-bold text-stone-800">學員 法心</span>
+                        <a href="#" class="text-brand text-sm hover:underline font-bold text-left">閱讀完整故事</a>
+                    </div>
+                </div>
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <p class="text-stone-700 leading-loose mb-10 text-base italic text-left text-left text-left">「別人送孩子學才藝，我帶三歲半的女兒進佛堂。用『十無量相應心品』教她：生氣時想起歡喜心，不分享時背捨離心，五歲的她竟都聽進去了。趁習氣還不深時種下正確的種子，是我給女兒最好的禮物。」</p>
+                    <div class="flex items-center justify-between mt-auto pt-6 border-t border-stone-100">
+                        <span class="font-bold text-stone-800">學員 法悟</span>
+                        <a href="#" class="text-brand text-sm hover:underline font-bold">閱讀完整故事</a>
+                    </div>
+                </div>
+                <div class="premium-card p-10 flex flex-col justify-between">
+                    <p class="text-stone-700 leading-loose mb-10 text-base italic text-left text-left text-left text-left">「十分鐘前還開心通話，十分鐘後媽媽已在急救。面對人生最痛的離別，長期修行的功課讓我在悲傷中保持清明，為媽媽安排助念、請導師超度。媽媽走時面容安詳，我知道——我們都在大自在王佛溫暖的懷抱裡。」</p>
+                    <div class="flex items-center justify-between mt-auto pt-6 border-t border-stone-100">
+                        <span class="font-bold text-stone-800">學員 法安</span>
+                        <a href="#" class="text-brand text-sm hover:underline font-bold">閱讀完整故事</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="mt-32">
+                <h4 class="text-center font-bold mb-12 text-2xl text-stone-800 text-center">學員心得影片：見證生命真實改變</h4>
+                <div class="flex flex-col lg:flex-row gap-10 text-left">
+                    <div class="lg:w-2/3 aspect-video bg-stone-900 rounded-[2.5rem] flex items-center justify-center text-white relative shadow-2xl overflow-hidden group">
+                         <div id="video-placeholder" class="text-stone-500 font-bold px-12 text-center text-lg tracking-widest">播放內容：其實你一直都有「選擇」</div>
+                         <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-all cursor-pointer">
+                            <div class="w-24 h-24 bg-brand rounded-full flex items-center justify-center pl-2 shadow-2xl group-hover:scale-110 transition duration-500">
+                                <div class="w-0 h-0 border-t-[14px] border-t-transparent border-l-[22px] border-l-white border-b-[14px] border-b-transparent"></div>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="lg:w-1/3 space-y-4">
+                        <button onclick="playVideo('其實你一直都有「選擇」', this)" class="video-btn active w-full text-left p-6 rounded-2xl border border-stone-200 bg-white transition flex items-center gap-4 hover:border-brand">
+                            <span class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-xs font-bold shrink-0">01</span>
+                            <span class="font-bold text-base leading-snug">其實你一直都有「選擇」</span>
+                        </button>
+                        <button onclick="playVideo('做出改變的第一步，你也可以！', this)" class="video-btn w-full text-left p-6 rounded-2xl border border-stone-200 bg-white transition flex items-center gap-4 hover:border-brand">
+                            <span class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-xs font-bold shrink-0">02</span>
+                            <span class="font-bold text-base leading-snug">做出改變的第一步，你也可以！</span>
+                        </button>
+                        <button onclick="playVideo('佛系業務的職場心法，不躺平，也不強求，而是…', this)" class="video-btn w-full text-left p-6 rounded-2xl border border-stone-200 bg-white transition flex items-center gap-4 hover:border-brand text-left">
+                            <span class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-xs font-bold shrink-0">03</span>
+                            <span class="font-bold text-base leading-snug">佛系業務的職場心法，不躺平，也不強求，而是…</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environment Section -->
+    <section id="environment" class="py-32 px-6 bg-stone-50 border-t border-stone-100">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-stone-900">台北大自在講堂｜環境與交通</h2>
+            <p class="text-stone-500 mb-20 text-lg md:text-xl font-light">鬧中取靜的實修空間，為您的升級之旅做好準備</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+                <div class="space-y-6">
+                    <div class="aspect-square image-placeholder rounded-[3rem] border border-stone-200">[ 講堂大廳環境 ]</div>
+                    <p class="font-bold text-stone-700">講堂大廳環境</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="aspect-square image-placeholder rounded-[3rem] border border-stone-200 text-center">[ 講堂環境 ]</div>
+                    <p class="font-bold text-stone-700">講堂環境</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="aspect-square image-placeholder rounded-[3rem] border border-stone-200 text-center">[ 講堂環境 ]</div>
+                    <p class="font-bold text-stone-700">講堂環境</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="aspect-square image-placeholder rounded-[3rem] border border-stone-200 text-center text-center">[ 講堂環境 ]</div>
+                    <p class="font-bold text-stone-700">講堂環境</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-12 lg:p-20 rounded-[4rem] shadow-sm flex flex-col md:flex-row gap-16 items-center border border-stone-100 text-left">
+                <div class="md:w-1/2 space-y-10">
+                    <h4 class="text-4xl font-bold tracking-tight text-brand">台北大自在講堂</h4>
+                    <p class="text-sub leading-loose text-xl font-light">講堂位於台北核心地段，環境清幽雅致。近南京復興捷運站，步行約 5 分鐘即可抵達。我們提供了安定、舒適的環境，讓每位學員都能在此專心修持。</p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 text-stone-800">
+                            <span class="text-brand font-bold shrink-0">地址</span>
+                            <span class="font-medium text-lg text-left">台北市中山區長春路 366 號 2 樓</span>
+                        </div>
+                        <div class="flex gap-4 text-stone-800">
+                            <span class="text-brand font-bold shrink-0">電話</span>
+                            <span class="font-bold text-2xl tracking-widest text-left">02-8770-6196 ／ 0965-606-196</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 w-full aspect-video image-placeholder rounded-3xl border border-stone-100 shadow-inner">
+                    [ 台北講堂地圖與實拍圖 ]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Links -->
+    <section id="register" class="py-32 px-6 bg-white border-t border-stone-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-brand rounded-[4rem] p-12 md:p-20 text-white shadow-2xl relative overflow-hidden mb-32 flex flex-col lg:flex-row justify-between items-center gap-12">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+                <div class="relative z-10 text-center lg:text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">開啟您的系統更新</h2>
+                    <p class="text-white/90 text-xl font-light">2/3 (二) 19:30 開課，現場席位有限，請即刻預約。</p>
+                </div>
+                <div class="mt-8 lg:mt-0 flex flex-col sm:flex-row gap-5 relative z-10 w-full lg:w-auto">
+                    <a href="tel:0287706196" class="bg-stone-900 text-white px-12 py-5 rounded-full font-bold hover:bg-stone-800 transition text-center shadow-lg text-lg">致電報名</a>
+                    <a href="#" class="bg-white text-brand px-12 py-5 rounded-full font-bold hover:bg-stone-50 transition text-center shadow-xl text-lg">線上填寫報名表</a>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-12 text-center text-stone-400 tracking-[0.5em] uppercase text-center text-center">全台各講堂報名頁面</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <a href="#" class="text-center p-8 bg-stone-50 rounded-[2.5rem] group hover:bg-white hover:border-brand border border-transparent transition shadow-sm">
+                    <p class="text-stone-400 text-xs mb-3 font-medium tracking-widest uppercase">永和</p>
+                    <h5 class="font-bold text-lg group-hover:text-brand transition text-center">妙空講堂</h5>
+                </a>
+                <a href="#" class="text-center p-8 bg-stone-50 rounded-[2.5rem] group hover:bg-white hover:border-brand border border-transparent transition shadow-sm">
+                    <p class="text-stone-400 text-xs mb-3 font-medium tracking-widest uppercase text-center">中壢</p>
+                    <h5 class="font-bold text-lg group-hover:text-brand transition text-center">緣道講堂</h5>
+                </a>
+                <a href="#" class="text-center p-8 bg-stone-50 rounded-[2.5rem] group hover:bg-white hover:border-brand border border-transparent transition shadow-sm">
+                    <p class="text-stone-400 text-xs mb-3 font-medium tracking-widest uppercase text-center text-center">台中</p>
+                    <h5 class="font-bold text-lg group-hover:text-brand transition text-center text-center text-center text-center">慈悲心講堂</h5>
+                </a>
+                <a href="#" class="text-center p-8 bg-stone-50 rounded-[2.5rem] group hover:bg-white hover:border-brand border border-transparent transition shadow-sm">
+                    <p class="text-stone-400 text-xs mb-3 font-medium tracking-widest uppercase text-center text-center text-center">台南</p>
+                    <h5 class="font-bold text-lg group-hover:text-brand transition text-center text-center text-center text-center">平等心講堂</h5>
+                </a>
+                <a href="#" class="text-center p-8 bg-stone-50 rounded-[2.5rem] group hover:bg-white hover:border-brand border border-transparent transition shadow-sm">
+                    <p class="text-stone-400 text-xs mb-3 font-medium tracking-widest uppercase text-center text-center text-center text-center text-center">高雄</p>
+                    <h5 class="font-bold text-lg group-hover:text-brand transition text-center text-center text-center text-center text-center text-center">捨離心講堂</h5>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 px-6 border-t border-stone-100 text-center text-stone-400 text-sm bg-white">
+        <div class="mb-10 text-center text-center">
+            <span class="text-brand font-bold tracking-[0.5em] uppercase text-2xl block mb-2 text-center text-center text-center">台北大自在講堂</span>
+            <span class="text-stone-300 text-xs tracking-widest font-light text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center">DA ZI ZAI TEMPLE TAIPEI</span>
+        </div>
+        <p class="max-w-2xl mx-auto leading-loose text-center text-stone-400 text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center">© 2025 佛乘宗法界弘法協會.</p>
+    </footer>
+
+    <!-- Persistent Floating CTA -->
+    <div class="fixed bottom-10 right-10 z-[60] flex flex-col gap-4 text-center text-center text-center">
+        <a href="#register" class="floating-cta bg-brand text-white px-12 py-5 rounded-full font-bold text-xl tracking-widest hover:scale-105 hover:brightness-110 active:scale-95 transition-all flex items-center gap-5 shadow-2xl text-center text-center text-center text-center">
+            <span class="relative flex h-3 w-3 text-center text-center text-center text-center text-center">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75 text-center text-center text-center text-center text-center text-center"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-white text-center text-center text-center text-center text-center text-center text-center"></span>
+            </span>
+            <span class="text-center text-center text-center text-center text-center text-center text-center text-center text-center">立即報名</span>
+        </a>
+    </div>
+
+    <script>
+        function playVideo(title, btn) {
+            document.getElementById('video-placeholder').innerText = "正在播放：" + title;
+            const buttons = document.querySelectorAll('.video-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
